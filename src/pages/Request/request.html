@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requests - Hire A Helper</title>
+  <link rel="stylesheet" href="request.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Hire A Helper</h2>
+      <ul>
+        <li><a href="../MyTask/mytask.html">My Tasks</a></li>
+        <li><a class="active" href="request.html">Requests</a></li>
+        <li><a href="#">Add Task</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+
+      <div class="calendar">
+        <div id="calendar"></div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="topbar">
+        <input type="text" placeholder="Search requests...">
+        <div class="profile">
+          <img src="profile.png" alt="Profile">
+          <span>shadcn<br>me@example.com</span>
+        </div>
+      </div>
+
+      <h2>Incoming Requests</h2>
+      <div class="requests-container">
+        <p>No incoming requests available.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="request.js"></script>
+</body>
+</html>

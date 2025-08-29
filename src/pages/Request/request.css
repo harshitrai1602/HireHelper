@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #f8f8f8;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 12px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 16px;
+  display: block;
+  padding: 8px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background: #333;
+  color: #fff;
+}
+
+/* Calendar */
+.calendar {
+  margin-top: auto;
+  background: #222;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  font-size: 12px;
+}
+
+.calendar th, .calendar td {
+  padding: 6px;
+  text-align: center;
+}
+
+.calendar th {
+  font-weight: bold;
+  color: #ff9800;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  overflow-y: auto;
+}
+
+/* Top Bar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar input {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.profile span {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Requests Container */
+.requests-container {
+  background: #fafafa;
+  border: 1px dashed #ccc;
+  padding: 40px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #666;
+}
