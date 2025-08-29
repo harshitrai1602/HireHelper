@@ -2,56 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hire A Helper - My Tasks</title>
+  <title>My Tasks - Hire A Helper</title>
   <link rel="stylesheet" href="mytask.css">
 </head>
 <body>
-  <!-- Top Navbar -->
-  <div class="navbar">
-    <span class="menu-toggle">☰</span> Hire A Helper
-  </div>
+  <header>
+    <h1>Hire A Helper</h1>
+  </header>
 
-  <!-- Main Layout -->
-  <div class="wrapper">
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+  <div class="container">
+    <aside class="sidebar">
       <h3>Menu</h3>
       <ul>
-        <li><a href="mytask.html" class="menu-link active">My Tasks</a></li>
-        <li><a href="../Request/request.html" class="menu-link">Requests</a></li>
-        <li><a href="#" class="menu-link">My Favorites</a></li>
-        <li><a href="add-task.html" class="menu-link">Add Tasks</a></li>
-        <li><a href="#" class="menu-link">Settings</a></li>
+        <li><a href="../MyTask/mytask.html" class="active">My Tasks</a></li>
+        <li><a href="../Request/request.html">Requests</a></li>
+        <li><a href="../MyRequest/myrequest.html">My Request</a></li>
+        <li><a href="#">Add Tasks</a></li>
+        <li><a href="#">Settings</a></li>
       </ul>
-
       <h3>Calendar</h3>
-      <div class="calendar">
-        <div class="calendar-controls">
-          <select id="monthSelect"></select>
-          <select id="yearSelect"></select>
-        </div>
-        <table id="calendarTable"></table>
-      </div>
-    </div>
+      <div id="calendar"></div>
+    </aside>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <main class="content">
       <div class="top-bar">
-        <div class="search-box">
-          <input type="text" placeholder="Search tasks...">
-        </div>
-        <a href="add-task.html" class="add-btn">+ Add New Task</a>
+        <input type="text" placeholder="Search tasks..." class="search-box">
+        <button class="add-btn">+ Add New Task</button>
       </div>
-
-      <!-- Task Cards -->
-      <div class="card-grid">
-        <!-- tasks will be dynamically added here -->
-      </div>
-    </div>
+    </main>
   </div>
 
-  <!-- JavaScript -->
   <script src="mytask.js"></script>
 </body>
 </html>

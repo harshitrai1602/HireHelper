@@ -1,71 +1,62 @@
-// Sidebar Toggle
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  document.getElementById('sidebar').classList.toggle('hidden');
-});
+// Simple Calendar Render
+const calendarEl = document.getElementById("calendar");
+const date = new Date();
+let month = date.getMonth();
+let year = date.getFullYear();
 
-// Calendar Generator
-const monthSelect = document.getElementById('monthSelect');
-const yearSelect = document.getElementById('yearSelect');
-const calendarTable = document.getElementById('calendarTable');
+function renderCalendar() {
+  const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
 
-const months = [
-  "January","February","March","April","May","June",
-  "July","August","September","October","November","December"
-];
-
-const now = new Date();
-let currentMonth = now.getMonth();
-let currentYear = now.getFullYear();
-
-// Populate dropdowns
-months.forEach((m, i) => {
-  let option = document.createElement("option");
-  option.value = i;
-  option.text = m;
-  if (i === currentMonth) option.selected = true;
-  monthSelect.appendChild(option);
-});
-
-for (let y = 2000; y <= 2030; y++) {
-  let option = document.createElement("option");
-  option.value = y;
-  option.text = y;
-  if (y === currentYear) option.selected = true;
-  yearSelect.appendChild(option);
-}
-
-function generateCalendar(month, year) {
-  calendarTable.innerHTML = "";
-
-  let firstDay = new Date(year, month).getDay();
+  let firstDay = new Date(year, month, 1).getDay();
   let daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  let table = "<tr>";
-  const days = ["Su","Mo","Tu","We","Th","Fr","Sa"];
-  days.forEach(d => table += `<th>${d}</th>`);
-  table += "</tr><tr>";
+  let calendarHTML = `
+    <select id="monthSelect">${months.map((m,i)=>
+      `<option value="${i}" ${i===month?"selected":""}>${m}</option>`).join("")}
+    </select>
+    <select id="yearSelect">
+      ${Array.from({length: 10}, (_,i)=>year-5+i).map(y=>
+        `<option value="${y}" ${y===year?"selected":""}>${y}</option>`).join("")}
+    </select>
+    <table>
+      <thead>
+        <tr>
+          <th>Su</th><th>Mo</th><th>Tu</th><th>We</th>
+          <th>Th</th><th>Fr</th><th>Sa</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
 
-  let cellCount = 0;
-  for (let i = 0; i < firstDay; i++) {
-    table += "<td></td>";
-    cellCount++;
+  let day = 1;
+  for (let i=0;i<6;i++) {
+    calendarHTML += "<tr>";
+    for (let j=0;j<7;j++) {
+      if (i===0 && j<firstDay) {
+        calendarHTML += "<td></td>";
+      } else if (day>daysInMonth) {
+        break;
+      } else {
+        calendarHTML += `<td>${day}</td>`;
+        day++;
+      }
+    }
+    calendarHTML += "</tr>";
   }
+  calendarHTML += "</tbody></table>";
+  calendarEl.innerHTML = calendarHTML;
 
-  for (let day = 1; day <= daysInMonth; day++) {
-    if (cellCount % 7 === 0 && cellCount !== 0) table += "</tr><tr>";
-    table += `<td>${day}</td>`;
-    cellCount++;
-  }
-
-  table += "</tr>";
-  calendarTable.innerHTML = table;
+  document.getElementById("monthSelect").addEventListener("change", e=>{
+    month = parseInt(e.target.value);
+    renderCalendar();
+  });
+  document.getElementById("yearSelect").addEventListener("change", e=>{
+    year = parseInt(e.target.value);
+    renderCalendar();
+  });
 }
 
-generateCalendar(currentMonth, currentYear);
-
-monthSelect.addEventListener("change", () => {
-  generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
-});
-yearSelect.addEventListener("change", () => {
-  generateCalendar(parseInt(monthSelect.value), parseInt(yearSelect.value));
-});
+renderCalendar();
