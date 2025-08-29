@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire A Helper</title>
+  <link rel="stylesheet" href="mytask.css">
+</head>
+<body>
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <span class="menu-toggle">☰</span> Hire A Helper
+  </div>
+
+  <!-- Main Layout -->
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="#" class="menu-link">My Tasks</a></li>
+        <li><a href="#" class="menu-link">Requests</a></li>
+        <li><a href="#" class="menu-link">My Favorites</a></li>
+        <li><a href="#" class="menu-link">Add Tasks</a></li>
+        <li><a href="#" class="menu-link">Settings</a></li>
+      </ul>
+
+      <h3>Calendar</h3>
+      <div class="calendar">
+        <div class="calendar-controls">
+          <select id="monthSelect"></select>
+          <select id="yearSelect"></select>
+        </div>
+        <table id="calendarTable"></table>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="top-bar">
+        <div class="search-box">
+          <input type="text" placeholder="Search tasks...">
+        </div>
+        <a href="add-task.html" class="add-btn">+ Add New Task</a>
+      </div>
+
+      <!-- Task Cards -->
+      <div class="card-grid">
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="mytask.js"></script>
+</body>
+</html>
