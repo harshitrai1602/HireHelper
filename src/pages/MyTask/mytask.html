@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Tasks - Hire_A _Helper</title>
-  <link rel="stylesheet" href="mytask.css">
+  <meta charset="UTF-8" />
+  <title>Hire A Helper – My Tasks</title>
+  <link rel="stylesheet" href="mytask.css" />
 </head>
 <body>
-  <header>
-    <h1>Hire A Helper</h1>
-  </header>
-
-  <div class="container">
+  <div class="app">
+    <!-- Sidebar -->
     <aside class="sidebar">
-      <h3>Menu</h3>
-      <ul>
-        <li><a href="../MyTask/mytask.html" class="active">My Tasks</a></li>
-        <li><a href="../Request/request.html">Requests</a></li>
-        <li><a href="../MyRequest/myrequest.html">My Request</a></li>
-        <li><a href="#">Add Tasks</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
-      <h3>Calendar</h3>
-      <div id="calendar"></div>
+      <div class="brand">
+        <div class="dot"></div>
+        <span>Hire A Helper</span>
+      </div>
+
+      <nav class="menu">
+        <a class="item active" href="./mytask.html">
+          <span>My Tasks</span>
+        </a>
+        <a class="item" href="../Request/request.html">
+          <span>Requests</span> <em class="count">23</em>
+        </a>
+        <a class="item" href="../MyRequest/myrequest.html">
+          <span>My Requests</span> <em class="count">10</em>
+        </a>
+        <a class="item" href="#"><span>Add Task</span></a>
+        <a class="item" href="#"><span>Settings</span></a>
+      </nav>
+
+      <!-- Calendar -->
+      <section class="calendar">
+        <header class="cal-head">
+          <button id="prevMonth" aria-label="Previous month">‹</button>
+          <div id="calLabel" class="label"></div>
+          <button id="nextMonth" aria-label="Next month">›</button>
+        </header>
+        <div class="cal-grid" id="calGrid">
+          <!-- JS fills weekdays + days -->
+        </div>
+      </section>
     </aside>
 
-    <main class="content">
-      <div class="top-bar">
-        <input type="text" placeholder="Search tasks..." class="search-box">
-        <button class="add-btn">+ Add New Task</button>
-      </div>
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/></svg>
+          <input placeholder="Search products..." />
+        </div>
+        <a class="profile" href="#">
+          <img src="https://avatar.iran.liara.run/public/18" alt="avatar" />
+          <div class="who">
+            <strong>shadcn</strong>
+            <small>me@example.com</small>
+          </div>
+        </a>
+      </header>
+
+      <section class="page">
+        <h1>My Tasks</h1>
+        <p class="sub">Track and manage all tasks assigned to you.</p>
+
+        <div class="filters">
+          <input class="filter-input" placeholder="Filter tasks" />
+          <button class="chip">Status</button>
+          <button class="chip">Priority</button>
+        </div>
+
+        <!-- Empty grid (per your request to not show sample cards) -->
+        <div class="empty">
+          No tasks yet. Use “Add Task” to create one.
+        </div>
+      </section>
     </main>
   </div>
 

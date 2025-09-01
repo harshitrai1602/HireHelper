@@ -1,62 +1,68 @@
-// Simple Calendar Render
-const calendarEl = document.getElementById("calendar");
-const date = new Date();
-let month = date.getMonth();
-let year = date.getFullYear();
+// Calendar + simple interactions (duplicated per-page as requested)
+(function () {
+  const grid = document.getElementById("calGrid");
+  const label = document.getElementById("calLabel");
+  const prev = document.getElementById("prevMonth");
+  const next = document.getElementById("nextMonth");
+  if (!grid) return;
 
-function renderCalendar() {
-  const months = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December"
-  ];
+  let current = new Date();
+  let selectedKey = null;
 
-  let firstDay = new Date(year, month, 1).getDay();
-  let daysInMonth = new Date(year, month + 1, 0).getDate();
+  function render() {
+    const y = current.getFullYear();
+    const m = current.getMonth();
+    label.textContent = `${current.toLocaleString("default",{month:"long"})} ${y}`;
 
-  let calendarHTML = `
-    <select id="monthSelect">${months.map((m,i)=>
-      `<option value="${i}" ${i===month?"selected":""}>${m}</option>`).join("")}
-    </select>
-    <select id="yearSelect">
-      ${Array.from({length: 10}, (_,i)=>year-5+i).map(y=>
-        `<option value="${y}" ${y===year?"selected":""}>${y}</option>`).join("")}
-    </select>
-    <table>
-      <thead>
-        <tr>
-          <th>Su</th><th>Mo</th><th>Tu</th><th>We</th>
-          <th>Th</th><th>Fr</th><th>Sa</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+    grid.innerHTML = "";
 
-  let day = 1;
-  for (let i=0;i<6;i++) {
-    calendarHTML += "<tr>";
-    for (let j=0;j<7;j++) {
-      if (i===0 && j<firstDay) {
-        calendarHTML += "<td></td>";
-      } else if (day>daysInMonth) {
-        break;
-      } else {
-        calendarHTML += `<td>${day}</td>`;
-        day++;
-      }
+    // Weekdays
+    const wd = ["Su","Mo","Tu","We","Th","Fr","Sa"];
+    wd.forEach(d => {
+      const c = document.createElement("div");
+      c.className = "cell muted";
+      c.textContent = d;
+      grid.appendChild(c);
+    });
+
+    const first = new Date(y, m, 1);
+    const startDay = first.getDay();
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+
+    // Leading blanks
+    for (let i = 0; i < startDay; i++) {
+      const b = document.createElement("div");
+      b.className = "cell muted";
+      b.textContent = "";
+      grid.appendChild(b);
     }
-    calendarHTML += "</tr>";
+
+    // Days
+    for (let d = 1; d <= daysInMonth; d++) {
+      const cell = document.createElement("button");
+      cell.type = "button";
+      cell.className = "cell day";
+      cell.textContent = d;
+
+      const isToday =
+        d === new Date().getDate() &&
+        m === new Date().getMonth() &&
+        y === new Date().getFullYear();
+      if (isToday) cell.classList.add("today");
+
+      const key = `${y}-${m}-${d}`;
+      if (key === selectedKey) cell.classList.add("selected");
+
+      cell.addEventListener("click", () => {
+        selectedKey = key;
+        render();
+      });
+
+      grid.appendChild(cell);
+    }
   }
-  calendarHTML += "</tbody></table>";
-  calendarEl.innerHTML = calendarHTML;
 
-  document.getElementById("monthSelect").addEventListener("change", e=>{
-    month = parseInt(e.target.value);
-    renderCalendar();
-  });
-  document.getElementById("yearSelect").addEventListener("change", e=>{
-    year = parseInt(e.target.value);
-    renderCalendar();
-  });
-}
-
-renderCalendar();
+  render();
+  prev.addEventListener("click", () => { current.setMonth(current.getMonth() - 1); render(); });
+  next.addEventListener("click", () => { current.setMonth(current.getMonth() + 1); render(); });
+})();

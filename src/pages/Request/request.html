@@ -1,34 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Requests - Hire A Helper</title>
-  <link rel="stylesheet" href="request.css">
+  <meta charset="UTF-8" />
+  <title>Hire A Helper – Requests</title>
+  <link rel="stylesheet" href="request.css" />
 </head>
 <body>
-  <header>
-    <h1>Hire A Helper</h1>
-  </header>
-
-  <div class="container">
+  <div class="app">
+    <!-- Sidebar -->
     <aside class="sidebar">
-      <h3>Menu</h3>
-      <ul>
-        <li><a href="../MyTask/mytask.html">My Tasks</a></li>
-        <li><a href="../Request/request.html" class="active">Requests</a></li>
-        <li><a href="../MyRequest/myrequest.html">My Request</a></li>
-        <li><a href="#">Add Tasks</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
-      <h3>Calendar</h3>
-      <div id="calendar"></div>
+      <div class="brand">
+        <div class="dot"></div>
+        <span>Hire A Helper</span>
+      </div>
+
+      <nav class="menu">
+        <a class="item" href="../MyTask/mytask.html"><span>My Tasks</span></a>
+        <a class="item active" href="./request.html"><span>Requests</span> <em class="count">5</em></a>
+        <a class="item" href="../MyRequest/myrequest.html"><span>My Requests</span> <em class="count">23</em></a>
+        <a class="item" href="#"><span>Add Task</span></a>
+        <a class="item" href="#"><span>Settings</span></a>
+      </nav>
+
+      <!-- Calendar -->
+      <section class="calendar">
+        <header class="cal-head">
+          <button id="prevMonth">‹</button>
+          <div id="calLabel" class="label"></div>
+          <button id="nextMonth">›</button>
+        </header>
+        <div class="cal-grid" id="calGrid"></div>
+      </section>
     </aside>
 
-    <main class="content">
-      <div class="top-bar">
-        <input type="text" placeholder="Search requests..." class="search-box">
-        <button class="add-btn">+ Add New Request</button>
-      </div>
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/></svg>
+          <input placeholder="Search products..." />
+        </div>
+        <a class="profile" href="#">
+          <img src="https://avatar.iran.liara.run/public/30" alt="avatar"/>
+          <div class="who">
+            <strong>shadcn</strong>
+            <small>me@example.com</small>
+          </div>
+        </a>
+      </header>
+
+      <section class="page">
+        <div class="page-head">
+          <h1>Incoming Requests</h1>
+          <div class="tabs">
+            <button class="tab active" data-tab="all">All Req</button>
+            <button class="tab" data-tab="unread">Unread</button>
+          </div>
+        </div>
+
+        <!-- Request cards -->
+        <div class="req-card" data-state="pending">
+          <div class="row">
+            <h3>William Smith</h3>
+            <span class="ago">about 1 year ago</span>
+          </div>
+          <div class="sub">Meeting Tomorrow</div>
+          <p>Hi, let's have a meeting tomorrow to discuss the project. I’ve been reviewing the project details and have some ideas I'd like to share…</p>
+          <div class="actions">
+            <button class="pill accept">Accept</button>
+            <button class="pill ghost decline">Decline</button>
+          </div>
+        </div>
+
+        <div class="req-card" data-state="pending">
+          <div class="row">
+            <h3>Alice Smith</h3>
+            <span class="ago">about 1 year ago</span>
+          </div>
+          <div class="sub">Re: Project Update</div>
+          <p>Thank you for the project update. It looks great! I’ve gone through the report, and the progress is impressive…</p>
+          <div class="actions">
+            <button class="pill accept">Accept</button>
+            <button class="pill ghost decline">Decline</button>
+          </div>
+        </div>
+
+        <div class="req-card" data-state="pending">
+          <div class="row">
+            <h3>Bob Johnson</h3>
+            <span class="ago">over 1 year ago</span>
+          </div>
+          <div class="sub">Weekend Plans</div>
+          <p>Any plans for the weekend? I was thinking of going hiking in the nearby mountains…</p>
+          <div class="actions">
+            <button class="pill accept">Accept</button>
+            <button class="pill ghost decline">Decline</button>
+          </div>
+        </div>
+
+        <div class="req-card" data-state="pending">
+          <div class="row">
+            <h3>Emily Davis</h3>
+            <span class="ago">over 1 year ago</span>
+          </div>
+          <div class="sub">Re: Question about Budget</div>
+          <p>I have a question about the budget for the upcoming project. It seems like there’s a discrepancy in the allocation of resources…</p>
+          <div class="actions">
+            <button class="pill accept">Accept</button>
+            <button class="pill ghost decline">Decline</button>
+          </div>
+        </div>
+
+        <div class="req-card" data-state="pending">
+          <div class="row">
+            <h3>Michael Wilson</h3>
+            <span class="ago">over 1 year ago</span>
+          </div>
+          <div class="sub">Important Announcement</div>
+          <p>I have an important announcement to make during our team meeting. It pertains to a strategic shift in our approach…</p>
+          <div class="actions">
+            <button class="pill accept">Accept</button>
+            <button class="pill ghost decline">Decline</button>
+          </div>
+        </div>
+
+      </section>
     </main>
   </div>
 

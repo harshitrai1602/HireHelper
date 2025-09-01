@@ -1,34 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Request - Hire A Helper</title>
-  <link rel="stylesheet" href="myrequest.css">
+  <meta charset="UTF-8" />
+  <title>Hire A Helper – My Requests</title>
+  <link rel="stylesheet" href="myrequest.css" />
 </head>
 <body>
-  <header>
-    <h1>Hire A Helper</h1>
-  </header>
-
-  <div class="container">
+  <div class="app">
+    <!-- Sidebar -->
     <aside class="sidebar">
-      <h3>Menu</h3>
-      <ul>
-        <li><a href="../MyTask/mytask.html">My Tasks</a></li>
-        <li><a href="../Request/request.html">Requests</a></li>
-        <li><a href="../MyRequest/myrequest.html" class="active">My Request</a></li>
-        <li><a href="#">Add Tasks</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
-      <h3>Calendar</h3>
-      <div id="calendar"></div>
+      <div class="brand">
+        <div class="dot"></div>
+        <span>Hire A Helper</span>
+      </div>
+
+      <nav class="menu">
+        <a class="item" href="../MyTask/mytask.html"><span>My Tasks</span></a>
+        <a class="item" href="../Request/request.html"><span>Requests</span> <em class="count">23</em></a>
+        <a class="item active" href="./myrequest.html"><span>My Requests</span> <em class="count">10</em></a>
+        <a class="item" href="#"><span>Add Task</span></a>
+        <a class="item" href="#"><span>Settings</span></a>
+      </nav>
+
+      <!-- Calendar -->
+      <section class="calendar">
+        <header class="cal-head">
+          <button id="prevMonth">‹</button>
+          <div id="calLabel" class="label"></div>
+          <button id="nextMonth">›</button>
+        </header>
+        <div class="cal-grid" id="calGrid"></div>
+      </section>
     </aside>
 
-    <main class="content">
-      <div class="top-bar">
-        <input type="text" placeholder="Search my requests..." class="search-box">
-        <button class="add-btn">+ Add New Request</button>
-      </div>
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/></svg>
+          <input placeholder="Search products..." />
+        </div>
+        <a class="profile" href="#">
+          <img src="https://avatar.iran.liara.run/public/12" alt="avatar" />
+          <div class="who">
+            <strong>shadcn</strong>
+            <small>me@example.com</small>
+          </div>
+        </a>
+      </header>
+
+      <section class="page">
+        <h1>My Requests</h1>
+        <p class="sub">Helps to track the request you have sent.</p>
+
+        <div class="filters">
+          <input class="filter-input" placeholder="Filter tasks" />
+          <button class="chip">Status</button>
+          <button class="chip">Priority</button>
+          <div class="right">
+            <button class="chip">View</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th style="width:38px"><input id="selectAll" type="checkbox" /></th>
+                <th>Tasks</th>
+                <th>Title</th>
+                <th class="center">Status</th>
+                <th class="center">Priority</th>
+                <th style="width:36px" class="center">⋯</th>
+              </tr>
+            </thead>
+            <tbody id="rows">
+              <!-- JS inserts demo rows so checkboxes work -->
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
   </div>
 
